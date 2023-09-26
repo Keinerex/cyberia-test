@@ -1,0 +1,19 @@
+.filter {
+    width: fit-content;
+    height: fit-content;
+    padding: 10px 29px;
+
+    @include text;
+
+    background: #303235;
+    border-radius: 8px;
+    box-shadow: 0 14px 61px 0 rgb(23 27 44 / 75%);
+
+    @include mobile(font-size, 12px);
+    @include hover-underline;
+
+    &.current::after {
+        width: 100%;
+        background: $link-color;
+    }
+}

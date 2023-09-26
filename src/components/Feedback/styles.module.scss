@@ -1,0 +1,80 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 80px;
+    margin-top: 100px;
+    background: $accent-background;
+
+    @include mobile(padding, 20px);
+    @include tablet(flex-direction, column);
+}
+
+.infoContainer,
+.formContainer {
+    width: 50%;
+    max-width: calc($tablet-width / 2);
+
+    @include tablet(width, 100%);
+}
+
+.formContainer {
+    @include tablet(margin-top, 40px);
+}
+
+.submit {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    margin-top: 20px;
+
+    @include mobile(flex-direction, column);
+    @include mobile(gap, 20px);
+
+    & > button {
+        width: 100%;
+    }
+}
+
+.confidence {
+    @include text;
+
+    width: 100%;
+    font-weight: 400;
+}
+
+.title {
+    @include title;
+
+    white-space: pre;
+
+    @include tablet(white-space, unset);
+}
+
+.text {
+    display: inline-block;
+    max-width: 400px;
+    margin-top: 20px;
+
+    @include text;
+    @include tablet(max-width, unset);
+}
+
+.info {
+    display: inline-block;
+    margin-top: 10px;
+    color: $text-color;
+}
+
+.ok {
+    color: green;
+}
+
+.error {
+    color: red;
+}

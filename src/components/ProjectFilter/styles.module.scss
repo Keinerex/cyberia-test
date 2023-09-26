@@ -1,0 +1,8 @@
+.container {
+    @include margin-top;
+
+    display: flex;
+    flex-flow: row wrap;
+    gap: 40px;
+    align-items: center;
+}

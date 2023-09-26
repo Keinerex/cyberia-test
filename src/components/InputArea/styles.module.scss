@@ -1,0 +1,47 @@
+.input {
+    display: none;
+}
+
+.label {
+    @include floating-label;
+}
+
+.textarea {
+    width: 100%;
+    max-height: 150px;
+    padding: 15px 10px;
+    line-height: 22px;
+    resize: none;
+    background-color: transparent;
+    border: none;
+    outline: none;
+
+    @include text;
+
+    &::placeholder {
+        color: transparent;
+    }
+
+    @include scrollbar;
+
+    &:not(:placeholder-shown) ~ .label,
+    &:focus ~ .label {
+        top: -10px;
+    }
+}
+
+.paperclip {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    cursor: pointer;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    margin-top: 10px;
+    border: 1px solid $input-color;
+    border-radius: 8px;
+}

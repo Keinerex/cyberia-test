@@ -1,0 +1,10 @@
+.main {
+    width: 100%;
+
+    @include adaptive-side;
+}
+
+.title {
+    @include margin-top;
+    @include title;
+}

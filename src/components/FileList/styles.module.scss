@@ -1,0 +1,12 @@
+.files {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: calc(100% - 40px);
+    min-height: 20px;
+    max-height: 150px;
+    padding-right: 20px;
+    margin-top: 20px;
+
+    @include scrollbar;
+}

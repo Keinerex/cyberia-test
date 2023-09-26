@@ -1,0 +1,86 @@
+@mixin flex {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    @include tablet(flex-direction, column);
+}
+
+.links {
+    width: 80%;
+
+    @include flex;
+    @include adaptive-side;
+
+    list-style-type: none;
+}
+
+.header {
+    z-index: 5;
+    width: 100%;
+    max-width: 1240px;
+    height: 100px;
+    max-height: 110px;
+    margin: 0 auto;
+    overflow: hidden;
+    background: transparent;
+    transition: all 0.5s ease-out;
+
+    @include flex;
+
+    &.open {
+        position: absolute;
+        justify-content: unset;
+        height: 100vh;
+        max-height: 100vh;
+        background: $dark-background;
+
+        & > .links {
+            gap: 30px;
+            align-items: unset;
+            width: 100%;
+
+            @include adaptive-values(paddin-left, 64px, 64px, 24px);
+        }
+    }
+}
+
+.listItem {
+    width: fit-content;
+}
+
+.headerLink {
+    font-size: 18px;
+    color: $link-color;
+    text-decoration: unset;
+
+    @include hover-underline;
+}
+
+.logo {
+    fill: $link-color;
+
+    &:hover {
+        fill: $primary-color;
+    }
+
+    transition: fill 0.2s;
+}
+
+.adaptive {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 110px;
+
+    @media (width <= $tablet-width) {
+        width: 100vw;
+        padding: 0 40px;
+    }
+
+    @media (width <= $mobile-width) {
+        padding: 0 20px;
+    }
+}

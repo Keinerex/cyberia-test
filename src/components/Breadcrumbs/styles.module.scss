@@ -1,0 +1,23 @@
+.link {
+    color: $crumb-color;
+    text-decoration: unset;
+
+    @include hover-underline($crumb-color, $direction: left);
+}
+
+.delimiter {
+    margin: 0 8px;
+    color: $crumb-color;
+}
+
+.crumb {
+    color: $dark-crumb-color;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+
+    @include margin-top;
+    @include text;
+}

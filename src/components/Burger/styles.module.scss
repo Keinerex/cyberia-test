@@ -1,0 +1,58 @@
+.container {
+    position: relative;
+    display: none;
+
+    @include tablet(display, block);
+
+    cursor: pointer;
+    content: "";
+    background: rgb(0 0 0 / 0%);
+}
+
+@mixin main {
+    width: 24px;
+    height: 3px;
+    background: $link-color;
+    border-radius: 1px;
+}
+
+.burger {
+    @include main;
+
+    &::before,
+    &::after {
+        position: absolute;
+        display: block;
+        content: "";
+        transition: 0.2s all 0.2s;
+
+        @include main;
+    }
+
+    &::before {
+        margin-top: -8px;
+    }
+
+    &::after {
+        margin-top: 8px;
+    }
+
+    &.open {
+        &::before,
+        &::after {
+            margin-top: 0;
+        }
+
+        &::after {
+            transform: rotate(45deg);
+        }
+
+        &::before {
+            transform: rotate(-45deg);
+        }
+
+        background: transparent;
+    }
+
+    transition: 0.2s all;
+}

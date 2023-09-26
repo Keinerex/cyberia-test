@@ -1,0 +1,15 @@
+.button {
+    padding: 20px 50px;
+    font-size: 13px;
+    color: $text-color;
+    text-transform: uppercase;
+    background: $contrast-primary-color;
+    border: none;
+    border-radius: 35px;
+    outline: none;
+    transition: background-color 0.3s;
+
+    &:hover {
+        background: $primary-color;
+    }
+}

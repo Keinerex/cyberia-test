@@ -1,0 +1,33 @@
+html,
+body {
+    height: 100%;
+    overflow-x: hidden;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background: $background;
+
+    &::after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -9;
+        display: block;
+        width: 100vw; // polyfill dvw for old browsers
+        width: 100dvw;
+        height: 100vh; // polyfill dvh for old browsers
+        height: 100dvh;
+        content: "";
+        background-image: url("/static/images/background.svg");
+        background-repeat: no-repeat;
+        background-position: 100% 0;
+    }
+}

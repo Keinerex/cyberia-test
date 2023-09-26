@@ -1,0 +1,13 @@
+.container {
+    @include margin-top;
+
+    display: grid;
+
+    @include adaptive-values(
+        grid-template-columns,
+        repeat(3, 1fr),
+        repeat(2, 1fr),
+        1fr
+    );
+    @include adaptive-values(gap, 40px, 30px, 20px);
+}

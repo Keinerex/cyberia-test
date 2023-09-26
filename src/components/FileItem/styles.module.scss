@@ -1,0 +1,51 @@
+.file {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    padding: 5px 10px;
+    font-size: 14px;
+    line-height: 22px;
+    background-color: $crumb-color;
+    border-radius: 4px;
+}
+
+.close {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+
+    &::before,
+    &::after {
+        position: absolute;
+        display: block;
+        width: 16px;
+        height: 2px;
+        content: "";
+        background: #000;
+        border-radius: 1px;
+    }
+
+    &::before {
+        transform: rotate(45deg);
+    }
+
+    &::after {
+        transform: rotate(-45deg);
+    }
+}
+
+.name {
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.size {
+    flex-grow: 1;
+    color: $text-color;
+    white-space: nowrap;
+}

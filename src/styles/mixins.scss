@@ -1,0 +1,114 @@
+@import "./variables";
+
+@mixin hover-underline(
+    $underline-color: $primary-color,
+    $height: 2px,
+    $direction: middle
+) {
+    &::after {
+        display: block;
+        width: 0;
+        height: $height;
+        content: "";
+        transition: width 0.2s;
+
+        @if $direction == middle {
+            margin: 0 auto;
+        }
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &:hover::after {
+        width: 100%;
+        background: $underline-color;
+    }
+}
+
+@mixin adaptive-side {
+    max-width: 1240px;
+    margin: 0 auto;
+
+    @media (width <= $tablet-width) {
+        padding: 0 40px;
+    }
+
+    @media (width <= $mobile-width) {
+        padding: 0 20px;
+    }
+}
+
+@mixin mobile($property, $value) {
+    @media (width <= $mobile-width) {
+        #{$property}: $value;
+    }
+}
+
+@mixin tablet($property, $value) {
+    @media (width <= $tablet-width) {
+        #{$property}: $value;
+    }
+}
+
+@mixin adaptive-values($property, $desktop, $tablet, $mobile) {
+    #{$property}: $desktop;
+
+    @include tablet($property, $tablet);
+    @include mobile($property, $mobile);
+}
+
+@mixin margin-top {
+    @include adaptive-values(margin-top, 80px, 40px, 20px);
+}
+
+@mixin floating-label {
+    position: absolute;
+    top: 17px;
+    left: 10px;
+    padding: 0 10px;
+    font-size: 14px;
+    color: $text-color;
+    cursor: text;
+    background: $accent-background;
+    border-radius: 8px;
+    transition: top 0.3s;
+}
+
+@mixin scrollbar {
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+        width: 5px;
+        background: $link-color;
+        border-radius: 8px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        cursor: pointer;
+        background: $crumb-color;
+        border-radius: 8px;
+    }
+}
+
+@mixin title($color: $text-color) {
+    font-size: $title-font-size;
+    color: $color;
+
+    @include mobile(font-size, $title-font-size-mobile);
+}
+
+@mixin subtitle($color: $text-color) {
+    font-size: $subtitle-font-size;
+    color: $color;
+
+    @include mobile(font-size, $subtitle-font-size-mobile);
+}
+
+@mixin text($color: $text-color) {
+    font-size: $text-font-size;
+    color: $color;
+
+    @include mobile(font-size, $text-font-size-mobile);
+}
