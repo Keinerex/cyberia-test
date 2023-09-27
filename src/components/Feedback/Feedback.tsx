@@ -1,17 +1,17 @@
 "use client";
 
-import React, {useEffect, useState} from "react";
+import React, { useState } from "react";
 import styles from "./styles.module.scss";
-import {Input} from "@/components/Input";
-import {FormProvider, SubmitHandler, useForm} from "react-hook-form";
-import {yupResolver} from "@hookform/resolvers/yup";
-import {useMaskedInput} from "@/utils/useMaskedInput";
-import {lazyNumberMask, numberMask} from "@/utils/masks";
-import {schema} from "@/components/Feedback/schema";
-import {InputArea} from "@/components/InputArea";
-import {Button} from "@/components/Button";
+import { Input } from "@/components/Input";
+import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useMaskedInput } from "@/utils/useMaskedInput";
+import { lazyNumberMask, numberMask } from "@/utils/masks";
+import { schema } from "@/components/Feedback/schema";
+import { InputArea } from "@/components/InputArea";
+import { Button } from "@/components/Button";
 import MailBoxIcon from "@/icons/mailbox.svg";
-import {baseUrl} from "@/constants/baseUrl";
+import { baseUrl } from "@/constants/baseUrl";
 import cn from "classnames";
 
 export type Inputs = {
@@ -30,18 +30,14 @@ export const Feedback = () => {
         register,
         handleSubmit,
         trigger,
-        formState: {errors},
-        setError
+        formState: { errors },
+        setError,
     } = methods;
 
     const [message, setMessage] = useState<{
         status: boolean;
         text?: string;
-    }>({status: true});
-
-    useEffect(() => {
-        console.log(errors)
-    }, [errors])
+    }>({ status: true });
 
     const onSubmit: SubmitHandler<Inputs> = data => {
         const formData = new FormData();
@@ -58,38 +54,42 @@ export const Feedback = () => {
             method: "POST",
             body: formData,
         })
-            .then(r => r.json().then(json => ({status: r.status, ...json})))
+            .then(r => r.json().then(json => ({ status: r.status, ...json })))
             .then(r => {
                 if (r.status === 200) {
                     setMessage({
                         status: true,
-                        text: "Ваша заявка успешно отправлена"
-                    })
+                        text: "Ваша заявка успешно отправлена",
+                    });
                 } else if (r.status === 422) {
-                    console.log(Object.entries(r.errors as {
-                        [key: string]: string[]
-                    }))
-                    Object.entries(r.errors as {
-                        [key: string]: string[]
-                    }).forEach(([key, value]) => {
-                        value.forEach(message => setError(key as keyof Inputs, {
-                            type: "custom",
-                            message: message
-                        }))
-                    })
+                    Object.entries(
+                        r.errors as {
+                            [key: string]: string[];
+                        }
+                    ).forEach(([key, value]) => {
+                        value.forEach(message =>
+                            setError(key as keyof Inputs, {
+                                type: "custom",
+                                message: message,
+                            })
+                        );
+                    });
                 } else {
                     setMessage({
                         status: false,
-                        text: "Не удалось отрпавить заявку, повторите отправку позднее"
-                    })
+                        text: "Не удалось отрпавить заявку, повторите отправку позднее",
+                    });
                 }
-            }).catch(() => setMessage({
-            status: false,
-            text: "Не удалось отрпавить заявку, повторите отправку позднее"
-        }))
+            })
+            .catch(() =>
+                setMessage({
+                    status: false,
+                    text: "Не удалось отрпавить заявку, повторите отправку позднее",
+                })
+            );
     };
 
-    const {onBlur, onFocus, onChange} = useMaskedInput(
+    const { onBlur, onFocus, onChange } = useMaskedInput(
         numberMask,
         lazyNumberMask,
         4
@@ -98,7 +98,7 @@ export const Feedback = () => {
     return (
         <section className={styles.container}>
             <div className={styles.infoContainer}>
-                <MailBoxIcon/>
+                <MailBoxIcon />
                 <h1 className={styles.title}>
                     {"Расскажите \nо вашем проекте"}
                 </h1>
@@ -138,7 +138,7 @@ export const Feedback = () => {
                                 onBlur: onBlur,
                             })}
                         />
-                        <InputArea id="message" placeholder="Сообщение"/>
+                        <InputArea id="message" placeholder="Message" />
                         <div className={styles.submit}>
                             <Button type="submit">Отправить</Button>
                             <span className={styles.confidence}>

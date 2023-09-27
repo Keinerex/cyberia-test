@@ -32,6 +32,7 @@ export const InputArea = ({
             </label>
             <input
                 id="files"
+                placeholder="files"
                 className={styles.input}
                 {...register("files")}
                 type="file"

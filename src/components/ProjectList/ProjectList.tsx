@@ -16,12 +16,12 @@ export const ProjectList = () => {
 
     return (
         <section className={styles.container}>
-            {data.items.map((item, index) => {
+            {data.items.map(item => {
                 if (
                     filter === null ||
                     item.categories.some(category => category.id === filter)
                 ) {
-                    return <ProjectCard key={index} {...item} />;
+                    return <ProjectCard key={item.id} {...item} />;
                 }
             })}
         </section>
