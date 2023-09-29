@@ -21,6 +21,8 @@ export type Inputs = {
     files?: FileList;
 };
 
+// для обработки форм решил использовать react hook form, а для валидации полей и их описания использовал yup
+
 export const Feedback = () => {
     const methods = useForm<Inputs>({
         resolver: yupResolver(schema),

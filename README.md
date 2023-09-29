@@ -1,22 +1,47 @@
-prepare 
+# Тестовое задание cyberia
+
+## Стек технологий
+### Основа
+* next.js - основной фреймворк
+* typescript - типизация
+* yup - схема и валидация форм
+* react-hook-form - обработка форм
+* imask - работа с масками
+* redux-toolkit и RTK-query - стор и кеширование запросов
+### Инфраструктура
+* jest и testing-library - модульные тесты
+* jest-fetch-mock - для мока запросов в тестах
+* eslint - линтер для ts
+* stylelint - линтер css
+* prettier - форматер кода
+* svgr/webpack - для загрузки svg файлов в компоненты
+
+
+## Архитектура
+Архитектура проекта простая модульная, которая подходит для маленьких проектов, единственная архитектурная особенность - 
+использование public api для изоляции логики компонентов
+
+
+## Запуск проекта
+### Установка зависимостей проекта
 ```bash
 npm install
 ```
 
-run as dev server
+### Запуск dev сборки
 
 ```bash
 npm run dev
 ```
 
-run as production
+### Сборка production версии и ее запуск
 
 ```bash
 npm run build
 npm run start
 ```
 
-run tests
+### Запуск тестов
 ```bash
 npm run test
 ```

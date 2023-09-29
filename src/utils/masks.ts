@@ -1,5 +1,7 @@
 import IMask, { Masked } from "imask";
 
+// маски для инпута номера телефона
+
 export const createMask = (pattern: Masked) => {
     const mask = IMask.createPipe(
         pattern,

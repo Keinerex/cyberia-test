@@ -1,6 +1,8 @@
 import * as yup from "yup";
 import { numberMask } from "@/utils/masks";
 
+
+// схема формы обратной связи на yup
 export const schema = yup.object({
     email: yup
         .string()
@@ -13,7 +15,7 @@ export const schema = yup.object({
                 if (!phone) return !!value;
                 return true;
             }
-        ),
+        ), // валидация, которую раньше делал бэкенд
     phone: yup
         .string()
         .transform(numberMask.unmask)
@@ -25,7 +27,7 @@ export const schema = yup.object({
                 if (!email) return !!value;
                 return true;
             }
-        )
+        ) // валидация, которую раньше делал бэкенд
         .test("length", "Неверный формат", function (value) {
             return !value || value.length === 10;
         }),

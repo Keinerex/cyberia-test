@@ -1,6 +1,9 @@
 import { Mask } from "@/utils/masks";
 import { ChangeEventHandler, FocusEventHandler, useCallback } from "react";
 
+
+// функции используемые для масочного ввода обернул в хук
+
 export const useMaskedInput = (
     mask: Mask,
     lazyMask: Mask = mask,

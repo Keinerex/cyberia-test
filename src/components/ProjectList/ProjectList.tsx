@@ -8,11 +8,11 @@ import styles from "./styles.module.scss";
 import { useFilter } from "@/components/ProjectFilterProvider";
 
 export const ProjectList = () => {
-    const { data, isLoading } = useGetProjectsQuery();
+    const { data, isLoading } = useGetProjectsQuery(); // запрос к бэкенду через RTK-query.
 
     const filter = useFilter();
 
-    if (isLoading || !data) return null;
+    if (isLoading || !data) return null; // вместо null, может быть любой лоадер или другой компонент-заглушка
 
     return (
         <section className={styles.container}>
@@ -27,3 +27,6 @@ export const ProjectList = () => {
         </section>
     );
 };
+
+// в качестве интересного решения загрузки данных с бэка можно было использовать getServerSideProps в next.js, и делать запрос там
+// ну или самым простым способом делать запрос в useEffect с пустым массивом зависимостей

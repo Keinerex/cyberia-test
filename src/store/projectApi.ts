@@ -28,6 +28,8 @@ interface getProjectCategoriesResponse {
     items: Category[];
 }
 
+// описываем запросы доступные в api
+
 export const projectApi = createApi({
     reducerPath: "project",
     baseQuery: baseQuery,
